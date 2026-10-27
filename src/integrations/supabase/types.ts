@@ -14,7 +14,320 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          created_at: string
+          id: string
+          is_read: boolean
+          message: string
+          severity: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_read?: boolean
+          message?: string
+          severity?: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_read?: boolean
+          message?: string
+          severity?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      app_settings: {
+        Row: {
+          category: string
+          description: string
+          id: number
+          sort: number
+          title: string
+        }
+        Insert: {
+          category: string
+          description?: string
+          id?: never
+          sort?: number
+          title: string
+        }
+        Update: {
+          category?: string
+          description?: string
+          id?: never
+          sort?: number
+          title?: string
+        }
+        Relationships: []
+      }
+      daily_metrics: {
+        Row: {
+          battery_kwh: number
+          chilled_l: number
+          collected_l: number
+          consumption_kwh: number
+          energy_cost_per_litre: number
+          grid_kwh: number
+          metric_date: string
+          rejection_rate: number
+          revenue_ksh: number
+          solar_kwh: number
+        }
+        Insert: {
+          battery_kwh?: number
+          chilled_l?: number
+          collected_l?: number
+          consumption_kwh?: number
+          energy_cost_per_litre?: number
+          grid_kwh?: number
+          metric_date: string
+          rejection_rate?: number
+          revenue_ksh?: number
+          solar_kwh?: number
+        }
+        Update: {
+          battery_kwh?: number
+          chilled_l?: number
+          collected_l?: number
+          consumption_kwh?: number
+          energy_cost_per_litre?: number
+          grid_kwh?: number
+          metric_date?: string
+          rejection_rate?: number
+          revenue_ksh?: number
+          solar_kwh?: number
+        }
+        Relationships: []
+      }
+      energy_current: {
+        Row: {
+          battery_cycles: number
+          battery_kwh: number
+          battery_pct: number
+          cooling_kw: number
+          id: number
+          lighting_kw: number
+          pump_kw: number
+          recommendation: string
+          solar_kw: number
+          total_consumption_kwh: number
+          total_generation_kwh: number
+          updated_at: string
+        }
+        Insert: {
+          battery_cycles?: number
+          battery_kwh?: number
+          battery_pct?: number
+          cooling_kw?: number
+          id?: number
+          lighting_kw?: number
+          pump_kw?: number
+          recommendation?: string
+          solar_kw?: number
+          total_consumption_kwh?: number
+          total_generation_kwh?: number
+          updated_at?: string
+        }
+        Update: {
+          battery_cycles?: number
+          battery_kwh?: number
+          battery_pct?: number
+          cooling_kw?: number
+          id?: number
+          lighting_kw?: number
+          pump_kw?: number
+          recommendation?: string
+          solar_kw?: number
+          total_consumption_kwh?: number
+          total_generation_kwh?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      farmers: {
+        Row: {
+          balance: number
+          created_at: string
+          full_name: string
+          id: string
+          joined_at: string
+          phone: string
+          status: string
+        }
+        Insert: {
+          balance?: number
+          created_at?: string
+          full_name: string
+          id?: string
+          joined_at?: string
+          phone?: string
+          status?: string
+        }
+        Update: {
+          balance?: number
+          created_at?: string
+          full_name?: string
+          id?: string
+          joined_at?: string
+          phone?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      hourly_forecast: {
+        Row: {
+          expected_load_kw: number
+          generation_kw: number
+          hour: number
+        }
+        Insert: {
+          expected_load_kw?: number
+          generation_kw?: number
+          hour: number
+        }
+        Update: {
+          expected_load_kw?: number
+          generation_kw?: number
+          hour?: number
+        }
+        Relationships: []
+      }
+      insights: {
+        Row: {
+          icon: string
+          id: number
+          sort: number
+          text: string
+        }
+        Insert: {
+          icon?: string
+          id?: never
+          sort?: number
+          text: string
+        }
+        Update: {
+          icon?: string
+          id?: never
+          sort?: number
+          text?: string
+        }
+        Relationships: []
+      }
+      milk_collections: {
+        Row: {
+          collected_at: string
+          farmer_id: string
+          id: string
+          quality: string
+          temp_c: number
+          volume_l: number
+        }
+        Insert: {
+          collected_at?: string
+          farmer_id: string
+          id?: string
+          quality?: string
+          temp_c: number
+          volume_l: number
+        }
+        Update: {
+          collected_at?: string
+          farmer_id?: string
+          id?: string
+          quality?: string
+          temp_c?: number
+          volume_l?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "milk_collections_farmer_id_fkey"
+            columns: ["farmer_id"]
+            isOneToOne: false
+            referencedRelation: "farmers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          cooperative_location: string
+          cooperative_name: string
+          created_at: string
+          full_name: string
+          id: string
+          job_title: string | null
+          phone: string | null
+        }
+        Insert: {
+          cooperative_location?: string
+          cooperative_name?: string
+          created_at?: string
+          full_name?: string
+          id: string
+          job_title?: string | null
+          phone?: string | null
+        }
+        Update: {
+          cooperative_location?: string
+          cooperative_name?: string
+          created_at?: string
+          full_name?: string
+          id?: string
+          job_title?: string | null
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      system_devices: {
+        Row: {
+          detail: string
+          icon: string
+          id: number
+          name: string
+          sort: number
+          status: string
+        }
+        Insert: {
+          detail?: string
+          icon?: string
+          id?: never
+          name: string
+          sort?: number
+          status: string
+        }
+        Update: {
+          detail?: string
+          icon?: string
+          id?: never
+          name?: string
+          sort?: number
+          status?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +336,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +463,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
