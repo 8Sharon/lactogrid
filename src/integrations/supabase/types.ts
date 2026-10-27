@@ -67,6 +67,7 @@ export type Database = {
       }
       daily_metrics: {
         Row: {
+          avg_temp_c: number
           battery_kwh: number
           chilled_l: number
           collected_l: number
@@ -79,6 +80,7 @@ export type Database = {
           solar_kwh: number
         }
         Insert: {
+          avg_temp_c?: number
           battery_kwh?: number
           chilled_l?: number
           collected_l?: number
@@ -91,6 +93,7 @@ export type Database = {
           solar_kwh?: number
         }
         Update: {
+          avg_temp_c?: number
           battery_kwh?: number
           chilled_l?: number
           collected_l?: number
